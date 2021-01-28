@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Mingrui's Site is currently under construction!
 
 You can use the [editor on GitHub](https://github.com/mingrui-hu/mingrui.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
