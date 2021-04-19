@@ -3,7 +3,7 @@ layout: post
 title:  "Issues on torch MSE feature-wise mean calculations"
 ---
 
-From torch document, 
+From torch documents, 
 
 `torch.nn.MSELoss` calls `F.MSE_loss` then calls `C api`
 
