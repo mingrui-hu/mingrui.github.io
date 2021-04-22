@@ -1,3 +1,8 @@
+---
+layout: post
+title:  "GAN Day1 Introduction"
+categories: gan
+---
 # Day1 Introduction
 
 ## 1. GAN 应用：
@@ -42,6 +47,7 @@ from 2014 onwards, 2018 exponential development
   - 
 
 - 输入输出
+  
   - 目标： 输入一个噪声， 生成一个图片
 - Compare： AE
   - 最大区别(really?)：loss function

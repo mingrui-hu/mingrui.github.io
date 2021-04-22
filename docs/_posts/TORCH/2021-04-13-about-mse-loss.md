@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Issues on torch MSE feature-wise mean calculations"
+categories: pytorch
 ---
 
 From torch documents, 
