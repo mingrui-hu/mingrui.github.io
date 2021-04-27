@@ -89,6 +89,55 @@ categories: linux
    - 配置/etc/profile.d/matlab_lic_var.sh
    - 给matlab命令创建一个GUI shortcut
 
-END
+# THE END 
 
 > 两天时间搞完了，搞完了回头看操作步骤，其实很简单，但确实花了不少时间，尤其是配网和可视化部分
+
+
+
+
+
+## 8. 后面又要求每个服务器额外挂载2T的数据盘，既然用的ubuntu lvm概念，就简单多了。来吧，扩容！
+
+   - 分区
+
+   ```shell
+   parted /dev/vdc
+   mktable -> gpt # 大于2T
+   p -> 打印一下， 看下容量大小${end_GB}
+   mkpart -> 正式分区
+   	partition name -> 默认
+   	file system -> ext4
+   	start -> 0G
+   	end -> ${end_GB}
+   	
+   p -> 检查一下， 如果不对， man parted，找到删除分区的options， 删掉重来就好了
+   quit
+   ```
+
+​	
+
+  - ```
+    pvcreate /dev/vdc1 # 用分区名不是盘符
+    ```
+
+  - ```shell
+    vgxtend ${vg_name} ${pv}
+    vgdisplay #检查一下
+    ```
+
+  - ```
+    lvm -l +90%FREE /dev/mapper/${vg_name}-${lv_name} # 注意这里如果vg或者lvm名中含有hyphen/`-`, 会自动转成两个`--`, 这样的话最好用/dev/${vg_name}/${lv_name}
+    lvdisplay
+    df -h # 这是会发现fs还是原来的大小
+    ```
+
+  - Ext3/ext4 fs需要进行一下online resizing(reduce只能离线做)
+
+    ```
+    resize2fs /dev/${vg_name}/${lv_name}
+    ```
+
+    
+
+- 完成！
