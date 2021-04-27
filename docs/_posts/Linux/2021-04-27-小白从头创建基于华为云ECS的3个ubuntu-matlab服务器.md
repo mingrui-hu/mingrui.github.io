@@ -1,6 +1,8 @@
+---
 layout: post
 title:  "小白从头创建基于华为云ECS的3个ubuntu服务器"
 categories: linux
+---
 
 # 小白从头搭建基于华为云ECS的3个ubuntu服务器
 
